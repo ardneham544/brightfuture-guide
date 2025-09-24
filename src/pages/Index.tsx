@@ -4,7 +4,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { BookOpen, Brain, MapPin, Users, CheckCircle, ArrowRight } from 'lucide-react';
 import heroImage from '@/assets/hero-career-guidance.jpg';
 
-const Index = () => {
+interface IndexProps {
+  onNavigate: (section: string) => void;
+}
+
+const Index: React.FC<IndexProps> = ({ onNavigate }) => {
   const features = [
     {
       icon: Brain,
@@ -52,11 +56,21 @@ const Index = () => {
                 Discover your perfect career path with personalized assessments, course recommendations, and comprehensive college information.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button variant="secondary" size="lg" className="shadow-button hover:shadow-elevated transition-all duration-300">
+                <Button 
+                  variant="secondary" 
+                  size="lg" 
+                  className="shadow-button hover:shadow-elevated transition-all duration-300"
+                  onClick={() => onNavigate('quiz')}
+                >
                   Start Career Assessment
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="border-white text-white hover:bg-white hover:text-primary"
+                  onClick={() => onNavigate('colleges')}
+                >
                   Explore Colleges
                 </Button>
               </div>
@@ -132,7 +146,12 @@ const Index = () => {
               <p className="text-accent-foreground/80 mb-6">
                 Join thousands of students who have already discovered their ideal career path with our platform.
               </p>
-              <Button variant="secondary" size="lg" className="w-full shadow-button">
+              <Button 
+                variant="secondary" 
+                size="lg" 
+                className="w-full shadow-button"
+                onClick={() => onNavigate('quiz')}
+              >
                 Begin Your Journey Today
               </Button>
             </div>
@@ -149,7 +168,12 @@ const Index = () => {
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             Don't let uncertainty hold you back. Start your personalized career journey with expert guidance and comprehensive resources.
           </p>
-          <Button variant="secondary" size="lg" className="shadow-button hover:shadow-elevated transition-all duration-300">
+          <Button 
+            variant="secondary" 
+            size="lg" 
+            className="shadow-button hover:shadow-elevated transition-all duration-300"
+            onClick={() => onNavigate('quiz')}
+          >
             Get Started Now
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
