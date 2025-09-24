@@ -6,6 +6,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Index from "./pages/Index";
 import QuizAssessment from "./components/QuizAssessment";
 import CollegeDirectory from "./components/CollegeDirectory";
+import CourseRecommendations from "./components/CourseRecommendations";
+import ExpertGuidance from "./components/ExpertGuidance";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 
@@ -31,6 +33,10 @@ const App = () => {
         }} />;
       case 'colleges':
         return <CollegeDirectory />;
+      case 'courses':
+        return <CourseRecommendations />;
+      case 'guidance':
+        return <ExpertGuidance />;
       default:
         return <Index onNavigate={handleNavigate} />;
     }

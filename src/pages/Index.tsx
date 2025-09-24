@@ -13,22 +13,26 @@ const Index: React.FC<IndexProps> = ({ onNavigate }) => {
     {
       icon: Brain,
       title: "Smart Career Assessment",
-      description: "Take our comprehensive aptitude test to discover careers that match your skills and interests."
+      description: "Take our comprehensive aptitude test to discover careers that match your skills and interests.",
+      action: "quiz"
     },
     {
       icon: BookOpen,
       title: "Course Recommendations", 
-      description: "Get personalized course suggestions based on your career goals and academic background."
+      description: "Get personalized course suggestions based on your career goals and academic background.",
+      action: "courses"
     },
     {
       icon: MapPin,
       title: "College Directory",
-      description: "Explore colleges and universities with detailed information about programs and admission requirements."
+      description: "Explore colleges and universities with detailed information about programs and admission requirements.",
+      action: "colleges"
     },
     {
       icon: Users,
       title: "Expert Guidance",
-      description: "Connect with career counselors and mentors for personalized advice and support."
+      description: "Connect with career counselors and mentors for personalized advice and support.",
+      action: "guidance"
     }
   ];
 
@@ -101,17 +105,26 @@ const Index: React.FC<IndexProps> = ({ onNavigate }) => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
-              <Card key={index} className="shadow-card hover:shadow-elevated transition-all duration-300 border-0 bg-gradient-card">
+              <Card 
+                key={index} 
+                className="shadow-card hover:shadow-elevated transition-all duration-300 border-0 bg-gradient-card cursor-pointer group"
+                onClick={() => onNavigate(feature.action)}
+              >
                 <CardHeader className="text-center">
-                  <div className="mx-auto w-16 h-16 bg-gradient-hero rounded-full flex items-center justify-center mb-4">
+                  <div className="mx-auto w-16 h-16 bg-gradient-hero rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                     <feature.icon className="h-8 w-8 text-white" />
                   </div>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
+                  <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-center text-base">
+                  <CardDescription className="text-center text-base mb-4">
                     {feature.description}
                   </CardDescription>
+                  <div className="flex justify-center">
+                    <Button variant="outline" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      Explore <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
